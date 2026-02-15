@@ -25,6 +25,7 @@ export interface Project {
   location: string;
   image: string;
   progress: number;
+  expectedProgress: number; // Novo campo para comparação
   status: ProjectStatus;
   budget: number;
   spent: number;
@@ -41,8 +42,8 @@ export interface FinancialRecord {
   type: 'PAYABLE' | 'RECEIVABLE';
   status: 'PENDING' | 'PAID' | 'APPROVED';
   dueDate: string;
-  project: string; // Project Name or ID
-  costCenter: string; // Specific task or department
+  project: string; 
+  costCenter: string; 
   category: FinancialCategory;
 }
 
@@ -62,4 +63,24 @@ export interface SaleLead {
   stage: 'LEAD' | 'VISIT' | 'PROPOSAL' | 'CONTRACT';
   value: number;
   interest: string;
+}
+
+// Novos Tipos para o Módulo de Obras
+export interface Measurement {
+  id: string;
+  projectId: string;
+  contractor: string;
+  service: string;
+  unit: string; // m², m³, un
+  totalContract: number;
+  executedPrevious: number;
+  unitPrice: number;
+}
+
+export interface ProjectStage {
+  name: string;
+  status: 'DONE' | 'IN_PROGRESS' | 'PENDING' | 'DELAYED';
+  start: string;
+  end: string;
+  progress: number;
 }

@@ -1,4 +1,4 @@
-import { Project, ProjectStatus, FinancialRecord, Unit, UnitStatus, SaleLead } from '../types';
+import { Project, ProjectStatus, FinancialRecord, Unit, UnitStatus, SaleLead, Measurement } from '../types';
 
 export const mockProjects: Project[] = [
   {
@@ -7,7 +7,8 @@ export const mockProjects: Project[] = [
     location: 'Centro, São Paulo',
     image: 'https://picsum.photos/id/122/400/300',
     progress: 65,
-    status: ProjectStatus.ON_TRACK,
+    expectedProgress: 70, // Levemente atrasado
+    status: ProjectStatus.ON_TRACK, // Ainda considerado on track pois a margem é pequena
     budget: 15000000,
     spent: 8500000,
     startDate: '2023-01-15',
@@ -19,6 +20,7 @@ export const mockProjects: Project[] = [
     location: 'Zona Sul, Rio de Janeiro',
     image: 'https://picsum.photos/id/142/400/300',
     progress: 22,
+    expectedProgress: 35, // Atraso crítico
     status: ProjectStatus.DELAYED,
     budget: 28000000,
     spent: 7200000,
@@ -31,12 +33,20 @@ export const mockProjects: Project[] = [
     location: 'Campinas, SP',
     image: 'https://picsum.photos/id/158/400/300',
     progress: 89,
+    expectedProgress: 89, // Em dia
     status: ProjectStatus.ON_TRACK,
     budget: 5000000,
     spent: 4200000,
     startDate: '2023-03-01',
     completionDate: '2023-11-30'
   }
+];
+
+export const mockMeasurements: Measurement[] = [
+  { id: 'm1', projectId: '1', contractor: 'Empreiteira Silva & Filhos', service: 'Reboco Fachada Norte', unit: 'm²', totalContract: 1200, executedPrevious: 450, unitPrice: 45 },
+  { id: 'm2', projectId: '1', contractor: 'Empreiteira Silva & Filhos', service: 'Contrapiso Lajes 1-5', unit: 'm²', totalContract: 2500, executedPrevious: 2000, unitPrice: 32 },
+  { id: 'm3', projectId: '1', contractor: 'Instala Elétrica Ltda', service: 'Passagem de Cabos Térreo', unit: 'm', totalContract: 5000, executedPrevious: 1200, unitPrice: 12 },
+  { id: 'm4', projectId: '1', contractor: 'Vidros & Esquadrias', service: 'Instalação Janelas Tipo A', unit: 'un', totalContract: 140, executedPrevious: 0, unitPrice: 850 },
 ];
 
 export const mockFinancials: FinancialRecord[] = [
