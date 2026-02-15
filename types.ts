@@ -32,6 +32,8 @@ export interface Project {
   completionDate: string;
 }
 
+export type FinancialCategory = 'MATERIAL' | 'LABOR' | 'EQUIPMENT' | 'ADMIN' | 'TAXES' | 'SALES' | 'OTHER';
+
 export interface FinancialRecord {
   id: string;
   description: string;
@@ -39,8 +41,9 @@ export interface FinancialRecord {
   type: 'PAYABLE' | 'RECEIVABLE';
   status: 'PENDING' | 'PAID' | 'APPROVED';
   dueDate: string;
-  project: string;
-  costCenter: string;
+  project: string; // Project Name or ID
+  costCenter: string; // Specific task or department
+  category: FinancialCategory;
 }
 
 export interface Unit {
