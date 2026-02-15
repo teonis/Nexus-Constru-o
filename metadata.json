@@ -1,0 +1,8 @@
+{
+  "name": "NEXUS Construction Cloud",
+  "description": "Uma plataforma SaaS completa para gestão de construção, com acompanhamento de obras, controle financeiro, CRM e insights orientados por IA.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
